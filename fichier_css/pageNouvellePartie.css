@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url(../dossierImage/superheroes-dc-comics-8k-dark-background-wallpaper-preview.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.backGroundPageGénérale {
+    height: 100%;
+    width: 100%;
+}
+
+/* div globale englobant les 4 div joueur généré*/
+.divGlobalePageNouvellePartie {
+    max-height: 80%;
+    width: 95rem;
+    height: 500px;
+    max-width: 100%;
+    background-color: aliceblue;
+}
