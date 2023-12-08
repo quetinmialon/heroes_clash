@@ -18,10 +18,12 @@
     height: 50px;
     width: 50px;
 }
-cP_BoutonSuppr_Class:hover{
+cP_B{
     position: absolute;
-    
+    top: 1em;
+    left: 5em;
     border: 1px dashed black;
-    background-color: rgb(255, 0, 0);
-   
+    background-color: rgb(13, 255, 0);
+    height: 50px;
+    width: 50px;   
 }
