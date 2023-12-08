@@ -2,7 +2,7 @@ import { creerUnElement } from "./fonctionsGlobales.js"
 import { tableOfHero } from "./variableGlobale.js"
 
 
-
+let glass
 let boutonJouer = document.getElementById("BoutonJouer")
 
 boutonJouer.addEventListener("click",()=>{
@@ -10,7 +10,7 @@ boutonJouer.addEventListener("click",()=>{
 })
 
 function popUpChoixDesCombatants() {
-    let glass = creerUnElement("","glass","div",document.body)
+    createGlass()
     let compteurManche = 1;
     let popUpChoixDesCombatants = creerUnElement("", "popUpChoixDesCombatants", "div", glass);
     let headerCDC = creerUnElement("", "headerCDC", "div", popUpChoixDesCombatants);
@@ -48,9 +48,12 @@ function popUpChoixDesCombatants() {
 }
 
 
-
-
-function popUpglass(){
-
-    return glass
+function createGlass(){    
+    glass = creerUnElement("","glass","div",document.body)
+    glass.addEventListener("click",()=>{
+    do{
+        glass.firstChild.remove()
+    } while(glass.firstChild)
+    glass.remove()
+    })
 }
