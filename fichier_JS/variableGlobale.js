@@ -11,4 +11,5 @@ let hero = {
 }
 // tableau qui se remplira des objets hero avec la méthode push
 let tableOfHero = ["","","","","","","","","","","","","","",""]
+
 export {hero, tableOfHero}
