@@ -1,6 +1,10 @@
 * {
     box-sizing: border-box;
 }
+html, body {
+    height: 100%;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -9,7 +13,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 35rem;
     background-repeat: no-repeat;
 }
 .backGroundPageGénérale {
@@ -18,7 +21,7 @@ body {
     width: 100%;
     
 }
-.boutonJouer {
+.boutonJouer, .boutonJouerCDC {
     height: 3rem;
     width: 12rem;
     background-color: #F4243D;
@@ -35,8 +38,12 @@ body {
     margin: 1rem;
     transition: 0.5s;
 }
+.divButton{
+    align-self: self-end;
+    padding-bottom: 4%;
 
-.boutonJouer:hover {
+}
+.boutonJouer:hover, .boutonJouerCDC:hover{
     background-color: #ffffff;
     color: #F4243D;
 }
@@ -73,4 +80,8 @@ a {
     width: 100%;
     height: 100%;
     z-index : 10;
+}
+.popUpChoixDesCombatants{
+    z-index : 15;
+    position : absolute;
 }
