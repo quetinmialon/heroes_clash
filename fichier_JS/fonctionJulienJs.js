@@ -1,4 +1,6 @@
-import { creerUnElement } from "./fonctionsGlobales.js"
+import { creerUnElement } from "./fonctionsGlobales.js";
+import { glass, createGlass } from "./fonctionQuentin.JS";
+
 
 //function creerUnElement(id, classe, typeElement, elementParent)
 
@@ -59,7 +61,19 @@ divBoutonPlus4.textContent = "+"
 //ecouteur d'évènement sur le bouton "+"
 //function creerUnElement(id, classe, typeElement, elementParent)
 
-divBoutonPlus1 = document.addEventListener("click",()=>{
-    let popUpChoixDesPersonnages = creerUnElement("","popUpChoixDesPersonnages","div",pageGlobal)
-    popUpChoixDesPersonnages.appendChild(pageGlobal)
+divBoutonPlus1.addEventListener("click",()=>{
+    createGlass()
+    let popUpChoixDesPersonnages = creerUnElement("","popUpChoixDesPersonnages","div",glass)
+})
+divBoutonPlus2.addEventListener("click",()=>{
+    createGlass()
+    let popUpChoixDesPersonnages = creerUnElement("","popUpChoixDesPersonnages","div",glass)
+})
+divBoutonPlus3.addEventListener("click",()=>{
+    createGlass()
+    let popUpChoixDesPersonnages = creerUnElement("","popUpChoixDesPersonnages","div",glass)
+})
+divBoutonPlus4.addEventListener("click",()=>{
+    createGlass()
+    let popUpChoixDesPersonnages = creerUnElement("","popUpChoixDesPersonnages","div",glass)
 })
