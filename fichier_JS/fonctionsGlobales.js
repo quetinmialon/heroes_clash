@@ -15,27 +15,37 @@ function creerUnElement(id, classe, typeElement, elementParent) {
     return elementCree;
 }
 
-async function  fetchOneSuperHero(i) {
+async function fetchOneSuperHero(i) {
     let url = `https://www.superheroapi.com/api.php/3573902879493747/${i}`;
-    try{
+    try {
         const response = await fetch(url);
-        allData = await response.json();
-        if(allData.response === 'success'){
-           // console.log(allData);
+        const allData = await response.json();
+        if (allData.response === 'success') {
+            // console.log(allData);
         }
-        return allData
-    } catch(error){
+        return allData;
+    } catch (error) {
         console.log(error);
     }
 }
 
+async function mettreHeroEntable(propriete, tableARemplir) {
+    
 
-for(let i of tableOfHero){
-fetchOneSuperHero(i).then(allData=>console.log(allData.name))
+    // Utiliser Promise.all pour attendre que toutes les requêtes soient terminées
+    await Promise.all(tableOfHero.map(async (i) => {
+        const allData = await fetchOneSuperHero(i);
+        if (allData.hasOwnProperty(propriete)) {
+            tableARemplir.push(allData[propriete]);
+        }
+    }));
+
+    // console.log(tableARemplir);
+    return tableARemplir
 }
 
 
-export{creerUnElement,fetchOneSuperHero}
+export{creerUnElement, mettreHeroEntable}
 
 
 

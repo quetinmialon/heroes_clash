@@ -84,4 +84,27 @@ a {
 .popUpChoixDesCombatants{
     z-index : 15;
     position : absolute;
+    display : flex;
+    flex-direction: column;
+    background: rgb(212,0,25);
+    background: linear-gradient(0deg, rgba(212,0,25,0.81) 0%, rgba(212,0,25,0) 100%);
+    border-radius: 3%;
+    width : 80rem;
+    height : 45rem;
+}
+.headerCDC{
+    display :flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.imageCDC{
+    width : 10rem;
+    height : 10rem;
+}
+.grilleCDC{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap : 3rem;
 }
