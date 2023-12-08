@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
 }
-    
+
 body {
     padding: 0;
     margin: 0;
@@ -14,26 +14,13 @@ body {
 }
 
 .ajustementDivPageNouvellePartie {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    height: 40rem;
-    max-height: 100%;
-    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* div globale englobant les 4 div joueur généré*/
-.divGlobalePageNouvellePartie {
-    max-height: 80%;
-    width: 95rem;
-    height: 500px;
-    max-width: 100%;
-    grid-area: 1 / 1 / 2 / 2;
 
-
-}
 
 .divBoutonNavPageNouvellePartie {
     height: 12rem;
@@ -44,7 +31,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: end;
-    
+
 }
 
 .boutonJouerPNP {
@@ -64,7 +51,7 @@ body {
     box-shadow: 1px 1px 1px white;
 
     transition: 0.5s;
-    
+
 }
 
 .boutonJouerPNP:hover {
@@ -89,7 +76,7 @@ body {
     box-shadow: 1px 1px 1px white;
 
     transition: 0.5s;
-   
+
 }
 
 .boutonBibliothequePNP:hover {
@@ -113,4 +100,108 @@ body {
     height: 5rem;
     width: 5rem;
     cursor: pointer;
+}
+/* div globale englobant les 4 div joueur généré*/
+.divGlobalePageNouvellePartie {
+    max-height: 80%;
+    width: 95rem;
+    height: 500px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1200px;
+    
+    
+    
+
+
+}
+.divJoueurPariSelection {
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.divJoueurClass {
+    height: 2rem;
+    width: 6rem;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divPariAffichageClass {
+    
+    opacity: 78%;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.divBoutonPlusClass {
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+/* couleur des div et signe par couleur */
+.divJoueurBleu {
+    background-color: #3424F4;
+    opacity: 78%;
+}
+.divJoueurJaune {
+    background-color: #E3F424;
+    opacity: 78%;
+}
+.divJoueurTurquoise {
+    background-color: #24F4A9;
+    opacity: 78%;
+}
+.divJoueurVert {
+    background-color: #00FF1A;
+    opacity: 78%;
+}
+.signeDollarBleu {
+    color: #3424F4;
+}
+.signeDollarJaune {
+    color: #E3F424;
+}
+.signeDollarTurquoise {
+    color: #24F4A9;
+}
+.signeDollarVert {
+    color: #00FF1A;
+}
+
+/* création du pop up choix des personnages */
+
+.popUpChoixDesPersonnages {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    background-color: #fff;
+
 }
