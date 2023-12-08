@@ -48,12 +48,16 @@ function popUpChoixDesCombatants() {
 }
 
 
-function createGlass(){    
-    glass = creerUnElement("","glass","div",document.body)
-    glass.addEventListener("click",()=>{
-    do{
-        glass.firstChild.remove()
-    } while(glass.firstChild)
-    glass.remove()
-    })
+function createGlass() {    
+    glass = creerUnElement("", "glass", "div", document.body);
+    
+    glass.addEventListener("click", (event) => {
+        // Vérifie si l'élément cliqué est le propre élément glass
+        if (event.target === glass) {
+            do {
+                glass.firstChild.remove();
+            } while (glass.firstChild);
+            glass.remove();
+        }
+    });
 }
