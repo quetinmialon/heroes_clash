@@ -57,3 +57,5 @@ function createGlass(){
     glass.remove()
     })
 }
+
+export {createGlass, glass}
