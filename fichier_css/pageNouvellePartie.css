@@ -100,8 +100,11 @@ body {
 .historiquePNP {
     background-image: url(../dossierImage/historique.png);
     background-size: cover;
+    color: #F4243D;
+    opacity: 78%;
     height: 5rem;
     width: 5rem;
+    cursor: pointer;
 }
 
 .cimetierePNP {
@@ -109,4 +112,5 @@ body {
     background-size: cover;
     height: 5rem;
     width: 5rem;
+    cursor: pointer;
 }
