@@ -11,7 +11,7 @@ boutonBibliotheque.addEventListener("click", ()=>{
     let cP_BoutonSuppr = creerUnElement("cP_BoutonSuppr_ID","cP_BoutonSuppr_Class","div",conteneurPrincipal)
     cP_BoutonSuppr.addEventListener("click", ()=>{
         cP_BoutonSuppr.addEventListener("mouseover", ()=>{
-            cP_BoutonSuppr.s
+            cP_BoutonSuppr.
         })
 
         conteneurPrincipal.remove()
