@@ -15,25 +15,27 @@ function creerUnElement(id, classe, typeElement, elementParent) {
     return elementCree;
 }
 
-const fetchAllSuperHero = async() => {
-    let url = `https://www.superheroapi.com/api.php/3573902879493747/70`;
+async function  fetchOneSuperHero(i) {
+    let url = `https://www.superheroapi.com/api.php/3573902879493747/${i}`;
     try{
         const response = await fetch(url);
         allData = await response.json();
         if(allData.response === 'success'){
-            console.log(allData);
+           // console.log(allData);
         }
+        return allData
     } catch(error){
         console.log(error);
     }
 }
 
-fetchAllSuperHero()
+
+for(let i of tableOfHero){
+fetchOneSuperHero(i).then(allData=>console.log(allData.name))
+}
 
 
-
-
-export{creerUnElement}
+export{creerUnElement,fetchOneSuperHero}
 
 
 
