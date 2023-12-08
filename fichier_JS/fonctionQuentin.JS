@@ -1,16 +1,19 @@
-import { creerUnElement } from "./fonctionsGlobales.js"
-import { tableOfHero } from "./variableGlobale.js"
+import { creerUnElement} from "./fonctionsGlobales.js"
+import { tableOfHero,} from "./variableGlobale.js"
+import { mettreHeroEntable } from "./fonctionsGlobales.js"
 
 
 let glass
 let boutonJouer = document.getElementById("BoutonJouer")
-
+let tableHeroImage = []
 boutonJouer.addEventListener("click",()=>{
     popUpChoixDesCombatants()
 })
 
-function popUpChoixDesCombatants() {
-    createGlass()
+// ...
+
+async function popUpChoixDesCombatants() {
+    createGlass();
     let compteurManche = 1;
     let popUpChoixDesCombatants = creerUnElement("", "popUpChoixDesCombatants", "div", glass);
     let headerCDC = creerUnElement("", "headerCDC", "div", popUpChoixDesCombatants);
@@ -24,8 +27,13 @@ function popUpChoixDesCombatants() {
     compteurOrdi.setAttribute("type", "number");
     compteurOrdi.setAttribute("max", "4");
     let grilleCDC = creerUnElement("grilleCDC", "grilleCDC", "div", popUpChoixDesCombatants);
-    for (let i of tableOfHero) {
-        let checkBoxe = creerUnElement(`checkboxe${i}`, "checkBoxe", "input", grilleCDC);
+
+    // Attendre que les images soient chargées avant de créer les éléments DOM
+    tableHeroImage = await mettreHeroEntable("image", tableHeroImage);
+    
+    for (let i = 0; i < tableOfHero.length; i++) {
+        let perso = creerUnElement("","perso","div",grilleCDC)
+        let checkBoxe = creerUnElement(`checkboxe${i}`, "checkBoxe", "input", perso);
         let interupt = true
         checkBoxe.setAttribute("type", "checkbox");
         checkBoxe.addEventListener("click", () => {
@@ -34,18 +42,22 @@ function popUpChoixDesCombatants() {
                 compteurManche++;
                 interupt = false
             } else {
-                
                 nombredemanche.textContent = `nombre de manche : ${compteurManche}`;
                 compteurManche--;
                 interupt = true
             }
         });
-        let imageCDC = creerUnElement(`image${i}`, "imageCDC", "div", grilleCDC);
+        let imageCDC = creerUnElement(`image${i}`, "imageCDC", "img", perso);
+        imageCDC.setAttribute("src", tableHeroImage[i].url);
     }
+
     let footerCDC = creerUnElement("", "footerCDC", "div", popUpChoixDesCombatants);
     let nombredemanche = creerUnElement("", "", "div", footerCDC);
     let boutonJouerCDC = creerUnElement("boutonJouerCDC", "boutonJouerCDC", "button", footerCDC);
 }
+
+// ...
+
 
 
 function createGlass() {    
@@ -61,3 +73,5 @@ function createGlass() {
         }
     });
 }
+
+export{glass, createGlass}
