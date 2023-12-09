@@ -80,31 +80,116 @@ a {
     width: 100%;
     height: 100%;
     z-index : 10;
+    background-color: rgba(0,0,0,0.25);
+ 
 }
 .popUpChoixDesCombatants{
     z-index : 15;
     position : absolute;
+    right : 30rem;
     display : flex;
     flex-direction: column;
     background: rgb(212,0,25);
     background: linear-gradient(0deg, rgba(212,0,25,0.81) 0%, rgba(212,0,25,0) 100%);
     border-radius: 3%;
-    width : 80rem;
-    height : 45rem;
+    width : 120vh;
+    height : 85vh;
+
 }
 .headerCDC{
     display :flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 
 }
-.imageCDC{
-    width : 10rem;
-    height : 10rem;
+.iconeJoueurs, .iconeOrdi{
+    height : 11vh;
+    width : 11vh;
+
+}
+.compteur{
+    width : 5vh;
 }
 .grilleCDC{
+    justify-content: flex-start;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap : 3rem;
+    max-height: 30rem;
+    overflow-y: hidden;
+}
+.grilleCDC:hover{
+    overflow-y: scroll;
+}
+.imageCDC{
+    width : 7.3rem;
+    height : 8rem;
+}
+.divCheckImage{
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerCDC{
+    display : flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.divStats{
+    background: rgb(212,0,25);
+    background: linear-gradient(0deg, rgba(212,0,25,0.81) 0%, rgba(212,0,25,0) 100%);
+    height : 35vh;
+    position: absolute;
+    right : 2rem;
+    display : flex;
+    flex-direction: column;
+    text-align: center;
+    padding : 15px;
+
+
+}
+.statsCDC{
+    display : flex;
+    flex-direction: row;
+    align-items: end;
+    height : 30vh;
+}
+.forceCDC{
+    width : 5vh;
+    background-color: blue;
+    color : white;
+    align-self: self-end;
+}
+
+.intelligenceCDC {
+    width : 5vh;
+    background-color: red;
+    color : white;
+    align-self: self-end;
+}
+.speedCDC {
+    width : 5vh;
+    background-color: yellow;
+    color : white;
+    align-self: self-end;
+}
+
+.durabilityCDC{
+    width : 5vh;
+    background-color: green;
+    color : white;
+    align-self: self-end;
+
+}
+.statDiv{
+    display: flex;
+    flex-direction: row;
+    color : white;
+    align-items: center;
+    height : 25vh;
 }

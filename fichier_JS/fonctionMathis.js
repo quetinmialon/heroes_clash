@@ -1,7 +1,7 @@
 import { glass, createGlass } from "./fonctionQuentin.JS"
 import { creerUnElement } from "./fonctionsGlobales.js"
 import { hero } from "./variableGlobale.js"
-import { glass, createGlass } from "./fonctionQuentin.JS"
+
 
 
 

@@ -1,6 +1,6 @@
 import {tableOfHero,hero} from "./variableGlobale.js"
 
-let allData
+
 function creerUnElement(id, classe, typeElement, elementParent) {
     if (!elementParent || !(elementParent instanceof Element)) {
         console.error("Invalid elementParent:", elementParent);
@@ -29,23 +29,13 @@ async function fetchOneSuperHero(i) {
     }
 }
 
-async function mettreHeroEntable(propriete, tableARemplir) {
-    
-
-    // Utiliser Promise.all pour attendre que toutes les requêtes soient terminées
-    await Promise.all(tableOfHero.map(async (i) => {
-        const allData = await fetchOneSuperHero(i);
-        if (allData.hasOwnProperty(propriete)) {
-            tableARemplir.push(allData[propriete]);
-        }
-    }));
-
-    // console.log(tableARemplir);
-    return tableARemplir
-}
+const tableHeroData = await Promise.all(tableOfHero.map(async (i) => {
+    const allData = await fetchOneSuperHero(i);
+    return allData;
+}));
 
 
-export{creerUnElement, mettreHeroEntable}
+export{creerUnElement, tableHeroData}
 
 
 
