@@ -1,4 +1,4 @@
-import {tableOfHero,hero} from "./variableGlobale.js"
+import {tableOfHero} from "./variableGlobale.js"
 
 
 function creerUnElement(id, classe, typeElement, elementParent) {

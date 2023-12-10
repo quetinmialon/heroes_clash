@@ -107,17 +107,19 @@ a {
     width : 11vh;
 
 }
-.compteur{
-    width : 5vh;
+.compteurCDC{
+    display : flex;
+    flex-direction: row;
 }
 .grilleCDC{
     justify-content: flex-start;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap : 3rem;
+    gap : 2rem;
     max-height: 30rem;
     overflow-y: hidden;
+    margin : 2rem;
 }
 .grilleCDC:hover{
     overflow-y: scroll;
@@ -151,6 +153,7 @@ a {
     flex-direction: column;
     text-align: center;
     padding : 15px;
+    border-radius: 5%;
 
 
 }
@@ -159,6 +162,7 @@ a {
     flex-direction: row;
     align-items: end;
     height : 30vh;
+
 }
 .forceCDC{
     width : 5vh;
@@ -175,7 +179,7 @@ a {
 }
 .speedCDC {
     width : 5vh;
-    background-color: yellow;
+    background-color: rgb(255, 0, 157);
     color : white;
     align-self: self-end;
 }
@@ -193,4 +197,10 @@ a {
     color : white;
     align-items: center;
     height : 25vh;
+    
+}
+.section{
+    display: flex;
+    flex-direction: row;
+    gap : 2rem;
 }
