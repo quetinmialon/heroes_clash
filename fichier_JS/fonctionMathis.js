@@ -1,18 +1,24 @@
+import { glass, createGlass } from "./fonctionQuentin.JS"
 import { creerUnElement } from "./fonctionsGlobales.js"
-import { hero } from "./variableGlobale.js"
+
+
+
+
+
 
 
 
 let boutonBibliotheque = document.getElementById("Bibliothèque")
 console.log()
 boutonBibliotheque.addEventListener("click", () => {
-    let conteneurPrincipal = creerUnElement("conteneurPrincipal_ID", "conteneurPrincipal_Class", "div", document.body)
+    createGlass()
+    let conteneurPrincipal = creerUnElement("conteneurPrincipal_ID", "conteneurPrincipal_Class", "div", glass)
 
     let cP_BoutonSuppr = creerUnElement("cP_BoutonSuppr_ID", "cP_BoutonSuppr_Class", "div", conteneurPrincipal)
     cP_BoutonSuppr.addEventListener("click", () => {
-
+        
         conteneurPrincipal.remove()
-
+        glass.remove()
     })
     cP_BoutonSuppr.addEventListener("mouseover", function (e) {
         e.target.setAttribute("class", "cP_B");

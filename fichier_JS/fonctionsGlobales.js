@@ -1,7 +1,10 @@
-import {tableOfHero,hero} from "./variableGlobale.js"
+import {tableOfHero} from "./variableGlobale.js"
 
-let allData
+
 function creerUnElement(id, classe, typeElement, elementParent) {
+// fonction de création rapide d'une div attendant 4 paramtres, un id, une classe, un typed'element et l'elementparent qui doit etre dans le DOM)
+// par exemple pour créer une div "test" dans la div parentTest (soit recupérer via get element by id ou créé dynamiquement en JS)
+// test = creerUnElement ("idDuTest","classeDuTest","div",parentTest)
     if (!elementParent || !(elementParent instanceof Element)) {
         console.error("Invalid elementParent:", elementParent);
         return null;
@@ -15,27 +18,26 @@ function creerUnElement(id, classe, typeElement, elementParent) {
     return elementCree;
 }
 
-async function  fetchOneSuperHero(i) {
+async function fetchOneSuperHero(i) {
+    //fonction faisant lien avec l'api super hero, le parametre "i" attend l'ID d'un héro
     let url = `https://www.superheroapi.com/api.php/3573902879493747/${i}`;
-    try{
+    try {
         const response = await fetch(url);
-        allData = await response.json();
-        if(allData.response === 'success'){
-           // console.log(allData);
-        }
-        return allData
-    } catch(error){
+        const allData = await response.json();
+        return allData;
+    } catch (error) {
         console.log(error);
     }
 }
+// place les héros attendu de tableOfHero dans un tablo appelé tableHeroData
+// chaque cellule du tableau tableHeroData contient l'objet avec toutes les informations sur le héro renvoyé par l'api
+const tableHeroData = await Promise.all(tableOfHero.map(async (i) => {
+    const allData = await fetchOneSuperHero(i);
+    return allData;
+}));
 
 
-for(let i of tableOfHero){
-fetchOneSuperHero(i).then(allData=>console.log(allData.name))
-}
-
-
-export{creerUnElement,fetchOneSuperHero}
+export{creerUnElement, tableHeroData}
 
 
 
