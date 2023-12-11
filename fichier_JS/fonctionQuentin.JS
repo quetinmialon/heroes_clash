@@ -168,8 +168,9 @@ async function popUpChoixDesCombatants() {
             glass.firstChild.remove();
         } while (glass.firstChild);
         glass.remove();
-        // console log les parametre de la partie sous forme d'objet
-        console.log(partieParams)
+        // renvoie les parametre de la partie sous forme d'objet
+        
+        return partieParams;
     }});
     
 }
