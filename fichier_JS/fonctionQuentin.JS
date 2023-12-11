@@ -170,7 +170,8 @@ async function popUpChoixDesCombatants() {
         glass.remove();
         // renvoie les parametre de la partie sous forme d'objet
         
-        return partieParams;
+        //fonctionDeJulien()
+
     }});
     
 }
