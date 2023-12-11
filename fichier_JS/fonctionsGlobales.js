@@ -5,10 +5,6 @@ function creerUnElement(id, classe, typeElement, elementParent) {
 // fonction de création rapide d'une div attendant 4 paramtres, un id, une classe, un typed'element et l'elementparent qui doit etre dans le DOM)
 // par exemple pour créer une div "test" dans la div parentTest (soit recupérer via get element by id ou créé dynamiquement en JS)
 // test = creerUnElement ("idDuTest","classeDuTest","div",parentTest)
-    if (!elementParent || !(elementParent instanceof Element)) {
-        console.error("Invalid elementParent:", elementParent);
-        return null;
-    }
 
     let elementCree = document.createElement(typeElement);
     elementCree.className = classe;

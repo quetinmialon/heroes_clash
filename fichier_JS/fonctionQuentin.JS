@@ -1,5 +1,6 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
+import { creationDivNombreDeJoueur } from "./fonctionJulienJs.js"
 
 // initialisation des variables au globales
 let glass
@@ -170,9 +171,8 @@ async function popUpChoixDesCombatants() {
                 glass.firstChild.remove();
             } while (glass.firstChild);
             glass.remove();
-            // renvoie les parametre de la partie sous forme d'objet
-            choixDuHéroAjouer()
-            //fonctionDeJulien()
+
+            creationDivNombreDeJoueur()
             return partieParams;
         }
     });
