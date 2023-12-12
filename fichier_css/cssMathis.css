@@ -5,28 +5,130 @@
     bottom: 1em;
     left: 5em;
     right: 5em;
-    border: 1px dashed black;
-    background-color: aqua;
+    border-style: double double double;
+    border-width: 1em;
+    background: rgb(212,0,25);
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(167, 37, 37, 0.485) 80%);    
+    overflow: hidden;
     
 }
-.cP_BoutonSuppr_Class{
+.boutonAstuce_Class{
     position: absolute;
+    right: 1em;
+    top:1em;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+.conteneurPrincipal_Class:hover{
+    overflow-y: scroll;
+}
+.ligne1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.titreCollection_Class{
+    height: 2em;
+    width: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom: 0.3em inset rgb(76, 0, 0) ;
+    background-color: rgb(212,0,25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2em;
+}
+.cP_BoutonSuppr_Class{
     top: 1em;
     left: 5em;
     height: 5em;
     width: 5em;
     height: auto;
     width: auto;
+    /* background-image: url(../dossierImage/boutonfermer.svg); */
 }
 .image{
     position: absolute;
     top: 1em;
     left: 5em;
-    height: 5em;
-    width: 5em;
+    height: 2.5em;
+    width: 2.5em;
 }
 .ligne1{
-    height: 10em;
+    height: 5em;
     width: 100%;
-    border: 1px dashed saddlebrown;
+}
+
+.DivImage_Class{
+    height: 100px;
+    width: 100px;
+}
+.imagesPerso{
+    height: 100px;
+    width: 100px;
+    border-top: 0.3em inset;
+    border-left: 0.3em inset;
+    border-color: black;
+    border-right: 0.3em double;
+    border-bottom: 0.3em double;
+    border-color: black;
+    border-bottom-left-radius: 30%;
+
+
+}
+.tableauBibliotheque_Class{
+    height: 100px;
+    width: 90%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+    justify-content: center;
+}
+.DivNomAttribut_Class{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.DivText_Class{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: rgb(212,0,25);
+    align-items: center;
+    justify-content: space-between;
+    border-style: inset;
+    border-color: rgb(78, 78, 78);
+    border-width: 0.3em;
+
+}
+
+.DivAttribut_Class{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: bisque;
+    align-items: center;
+    justify-content: space-between;
+    border-style: inset;
+    border-color: rgb(99, 10, 28);
+    border-width: 0.3em;
+    
+}
+.cellule{
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: rgba(110, 110, 110, 0.09);
+    border-width: 1em;
 }
