@@ -13,17 +13,20 @@
     position: absolute;
     top: 1em;
     left: 5em;
-    border: 1px dashed black;
-    background-color: rgb(0, 0, 0);
-    height: 50px;
-    width: 50px;
+    height: 5em;
+    width: 5em;
+    height: auto;
+    width: auto;
 }
-cP_B{
+.image{
     position: absolute;
     top: 1em;
     left: 5em;
-    border: 1px dashed black;
-    background-color: rgb(13, 255, 0);
-    height: 50px;
-    width: 50px;   
+    height: 5em;
+    width: 5em;
+}
+.ligne1{
+    height: 10em;
+    width: 100%;
+    border: 1px dashed saddlebrown;
 }

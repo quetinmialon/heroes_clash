@@ -19,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat;
+    flex-direction: column;
 }
 .backGroundPageGénérale {
     
@@ -167,13 +168,14 @@ a {
     flex-direction: row;
     align-items: end;
     height : 30vh;
-
+    transition: 0.5s;
 }
 .forceCDC{
     width : 5vh;
     background-color: blue;
     color : white;
     align-self: self-end;
+    transition: 0.5s;
 }
 
 .intelligenceCDC {
@@ -181,12 +183,14 @@ a {
     background-color: red;
     color : white;
     align-self: self-end;
+    transition: 0.5s;
 }
 .speedCDC {
     width : 5vh;
     background-color: rgb(255, 0, 157);
     color : white;
     align-self: self-end;
+    transition: 0.5s;
 }
 
 .durabilityCDC{
@@ -209,11 +213,37 @@ a {
     flex-direction: row;
     gap : 2rem;
 }
-
-.PUHC {
-    background: linear-gradient(0deg, rgba(212,0,25,0.81) 0%, rgba(212,0,25,0) 100%);
-    height : 35vh;
-    display: flex;
+.conteneurParentCDHAJ{
+    display : flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width : 58vh;
+    height : 60vh;
+    background: rgb(212,0,25);
+    background: linear-gradient(0deg, rgba(212,0,25,0.81) 0%, rgba(212,0,25,0) 100%);
+    gap : 2vh;
+    padding : 2vh;
+    border-radius: 5%;
+}
+.divParentCDHAJ:hover{
+    overflow-y: scroll;
+
+}
+.divParentCDHAJ{
+    overflow-y: hidden;
+    height: 50vh;
+    max-height: 50vh;
+    display : flex;
+    flex-direction : row;
+    flex-wrap: wrap;
+    gap : 2vh;
+}
+.randomPickHero{
+    height : 4rem;
+    width : 4rem;
+}
+#footer{
+    position : absolute;
+    bottom : 2rem;
 }

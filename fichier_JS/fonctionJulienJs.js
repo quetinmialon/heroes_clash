@@ -1,14 +1,16 @@
 import { creerUnElement } from "./fonctionsGlobales.js";
-import { glass, createGlass } from "./fonctionQuentin.JS";
+import { glass, createGlass,choixDuHéroAjouer, partieParams } from "./fonctionQuentin.JS";
+
 
 
 //function creerUnElement(id, classe, typeElement, elementParent)
 
 
-let divGlobalePageNouvellePartie = document.getElementById("divGlobalePageNouvellePartie")
+let divGlobalePageNouvellePartie = creerUnElement ("","divGlobalePageNouvellePartie","div",document.body)
 
 let pageGlobal = document.getElementById("pageGlobal")
 
+let tunedujoueur = ["",1000,1000,1000,1000]
 
 
 
@@ -28,9 +30,11 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
     // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
     divJoueur1.textContent = "Joueur " + (j + 1);
     let divPariAffichage1 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection1)
-    divPariAffichage1.textContent = "€"
+    divPariAffichage1.textContent = `${tunedujoueur[j+1]}€`
     let divBoutonPlus1 = creerUnElement("", "divBoutonPlusClass", "div", divJoueurPariSelection1)
-    //switch pour la création de chaque div parent avec comme variante la couleur différente pour toutes
+    divBoutonPlus1.addEventListener("click",()=>{
+        choixDuHéroAjouer()
+    })
     switch (j) {
         case 0:
             divJoueur1.classList.add("divJoueurBleu")
@@ -57,36 +61,8 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             break;
     }
     divBoutonPlus1.textContent = "+"
+
 }
 }
-    
-    
 
-// divBoutonPlus1.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-// divBoutonPlus2.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-// divBoutonPlus3.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-// divBoutonPlus4.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-
-function popUpHistoriqueCombat() {
-    let divPopUpHC = creerUnElement("", "PUHC", "div", document.body)
-}
-
-
-
-
-export {creationDivNombreDeJoueur, popUpHistoriqueCombat}
-
-//let boutonHistorique = creerUnElement("", "historique", "div", document.body)
-
+export {creationDivNombreDeJoueur, tunedujoueur}
