@@ -1,12 +1,13 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
 import { creationDivNombreDeJoueur } from "./fonctionJulienJs.js"
+import { FboutonBibliotheque, boutonBibliotheque } from "./fonctionMathis.js"
 
 // initialisation des variables au globales
 let glass
 
 let partieParams = {}
-
+let footer = document.getElementById("footer")
 
 // créer l'événement de lancement de partie
 let boutonJouer = document.getElementById("BoutonJouer")
@@ -171,8 +172,21 @@ async function popUpChoixDesCombatants() {
                 glass.firstChild.remove();
             } while (glass.firstChild);
             glass.remove();
-
+            boutonJouer.remove()
+            boutonBibliotheque.remove()
             creationDivNombreDeJoueur()
+            footer = creerUnElement("footer","footer","footer",document.body)
+            let boutonJouer2 = creerUnElement("boutonJouer","boutonJouer","button",footer)
+            let boutonBibliotheque2 = creerUnElement("boutonBibliotheque","boutonBibliothèque","button",footer )
+            boutonBibliotheque2.textContent = "Bibliothèque"
+            boutonBibliotheque2.addEventListener("click", ()=>{
+                FboutonBibliotheque()
+            })
+            boutonJouer2.textContent = "Combat"
+            boutonJouer2.addEventListener("click",()=>{
+                lancerLeCombat()
+            })
+            
             return partieParams;
         }
     });

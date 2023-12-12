@@ -16,6 +16,7 @@ let tunedujoueur = ["",1000,1000,1000,1000]
 
 
 
+
 //div joueur 1
 //création d'une boucle for pour ajouter la div correspondant
 function creationDivNombreDeJoueur(){
@@ -60,24 +61,5 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
 
 }
 }
-    
-    
 
-// divBoutonPlus1.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-// divBoutonPlus2.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-// divBoutonPlus3.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-// divBoutonPlus4.addEventListener("click", () => {
-//     createGlass()
-//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-// })
-
-export {creationDivNombreDeJoueur}
+export {creationDivNombreDeJoueur, tunedujoueur}

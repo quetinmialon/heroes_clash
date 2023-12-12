@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+html, body {
+    height: 100%;
+}
 
 body {
     padding: 0;
@@ -10,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+
 }
 
 .ajustementDivPageNouvellePartie {
@@ -105,11 +108,11 @@ body {
 .divGlobalePageNouvellePartie {
     max-height: 80%;
     width: 95rem;
-    height: 500px;
+    height: 70%;
     max-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 1200px;
+    column-gap: 70%;
     
     
     
