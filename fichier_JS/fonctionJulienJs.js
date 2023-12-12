@@ -1,5 +1,5 @@
 import { creerUnElement } from "./fonctionsGlobales.js";
-import { glass, createGlass,choixDuHéroAjouer1, choixDuHéroAjouer2, choixDuHéroAjouer3, choixDuHéroAjouer4, partieParams } from "./fonctionQuentin.JS";
+import { glass, createGlass,choixDuHéroAjouer, partieParams } from "./fonctionQuentin.JS";
 
 
 
@@ -37,7 +37,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             divJoueurPariSelection1.classList.add("signeDollarBleu")
             divBoutonPlus1.textContent = "+"
             divBoutonPlus1.addEventListener("click",()=>{
-                choixDuHéroAjouer1()
+                choixDuHéroAjouer(1)
             })
             break;
 
@@ -55,7 +55,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             divJoueurPariSelection2.classList.add("signeDollarJaune")
             divBoutonPlus2.textContent = "+"
             divBoutonPlus2.addEventListener("click",()=>{
-                choixDuHéroAjouer2()
+                choixDuHéroAjouer(2)
             })
             break;
         case 2:
@@ -72,7 +72,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             divJoueurPariSelection3.classList.add("signeDollarTurquoise")
             divBoutonPlus3.textContent = "+"
             divBoutonPlus3.addEventListener("click",()=>{
-                choixDuHéroAjouer3()
+                choixDuHéroAjouer(3)
             })
             break;
         case 3:
@@ -89,7 +89,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             divJoueurPariSelection4.classList.add("signeDollarVert")
             divBoutonPlus4.textContent = "+"
             divBoutonPlus4.addEventListener("click",()=>{
-                choixDuHéroAjouer4()
+                choixDuHéroAjouer(4)
             })
             break;
 

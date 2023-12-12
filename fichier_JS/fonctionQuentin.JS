@@ -224,14 +224,16 @@ function createGlass() {
     });
 }
 
-function choixDuHéroAjouer1() {
+function choixDuHéroAjouer(indexJoueur) {
     createGlass();
     let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
     let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
 
-    if (partieParams.herosSelectionnes1) {
-        for (let o = 0; o < partieParams.herosSelectionnes1.length; o++) {
-            const heroId = partieParams.herosSelectionnes1[o];
+    const herosSelectionnes = partieParams[`herosSelectionnes${indexJoueur}`];
+
+    if (herosSelectionnes) {
+        for (let o = 0; o < herosSelectionnes.length; o++) {
+            const heroId = herosSelectionnes[o];
             let heroData;
 
             for (let k = 0; k < tableHeroData.length; k++) {
@@ -257,104 +259,6 @@ function choixDuHéroAjouer1() {
         // Code à exécuter au clic sur le bouton de choix aléatoire
     });
 }
-function choixDuHéroAjouer2() {
-    createGlass();
-    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
-    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
 
-    if (partieParams.herosSelectionnes2) {
-        for (let o = 0; o < partieParams.herosSelectionnes2.length; o++) {
-            const heroId = partieParams.herosSelectionnes2[o];
-            let heroData;
-
-            for (let k = 0; k < tableHeroData.length; k++) {
-                if (tableHeroData[k].id === heroId) {
-                    heroData = tableHeroData[k];
-                    break;
-                }
-            }
-
-            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
-            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
-            HéroAChoisirCDHAJ.style.height = "8rem";
-            HéroAChoisirCDHAJ.style.width = "7.3rem";
-            HéroAChoisirCDHAJ.addEventListener("click", () => {
-                // Code à exécuter au clic sur l'image du héros
-            });
-        }
-    }
-
-    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
-    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
-    randomPickHero.addEventListener("click", () => {
-        // Code à exécuter au clic sur le bouton de choix aléatoire
-    });
-}
-function choixDuHéroAjouer3() {
-    createGlass();
-    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
-    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
-
-    if (partieParams.herosSelectionnes3) {
-        for (let o = 0; o < partieParams.herosSelectionnes3.length; o++) {
-            const heroId = partieParams.herosSelectionnes3[o];
-            let heroData;
-
-            for (let k = 0; k < tableHeroData.length; k++) {
-                if (tableHeroData[k].id === heroId) {
-                    heroData = tableHeroData[k];
-                    break;
-                }
-            }
-
-            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
-            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
-            HéroAChoisirCDHAJ.style.height = "8rem";
-            HéroAChoisirCDHAJ.style.width = "7.3rem";
-            HéroAChoisirCDHAJ.addEventListener("click", () => {
-                // Code à exécuter au clic sur l'image du héros
-            });
-        }
-    }
-
-    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
-    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
-    randomPickHero.addEventListener("click", () => {
-        // Code à exécuter au clic sur le bouton de choix aléatoire
-    });
-}
-function choixDuHéroAjouer4() {
-    createGlass();
-    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
-    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
-
-    if (partieParams.herosSelectionnes4) {
-        for (let o = 0; o < partieParams.herosSelectionnes4.length; o++) {
-            const heroId = partieParams.herosSelectionnes4[o];
-            let heroData;
-
-            for (let k = 0; k < tableHeroData.length; k++) {
-                if (tableHeroData[k].id === heroId) {
-                    heroData = tableHeroData[k];
-                    break;
-                }
-            }
-
-            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
-            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
-            HéroAChoisirCDHAJ.style.height = "8rem";
-            HéroAChoisirCDHAJ.style.width = "7.3rem";
-            HéroAChoisirCDHAJ.addEventListener("click", () => {
-                // Code à exécuter au clic sur l'image du héros
-            });
-        }
-    }
-
-    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
-    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
-    randomPickHero.addEventListener("click", () => {
-        // Code à exécuter au clic sur le bouton de choix aléatoire
-    });
-}
-export { glass, createGlass, partieParams, choixDuHéroAjouer1, choixDuHéroAjouer2, choixDuHéroAjouer3, choixDuHéroAjouer4 }
+export { glass, createGlass, partieParams, choixDuHéroAjouer}
 
