@@ -9,12 +9,7 @@ let divGlobalePageNouvellePartie = document.getElementById("divGlobalePageNouvel
 
 let pageGlobal = document.getElementById("pageGlobal")
 
-let partieParams = {
-    nombreDeJoueur: 3,
-    nombreDeRobot: 1,
-    herosSelectionnes: [332, 106, 346, 149, 720, 480, 476, 107, 514, 485],
-    nombreDeManche: 10,
-};
+
 
 
 
@@ -25,14 +20,17 @@ let partieParams = {
 function creationDivNombreDeJoueur(){
 for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
 
-    let divJoueurPariSelection1 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
-    let divJoueur1 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection1)
     
+    //création de la div parent de joueur
+    let divJoueurPariSelection1 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
+    //création des div enfants de divJoueurPariSelection 
+    let divJoueur1 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection1)
+    // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
     divJoueur1.textContent = "Joueur " + (j + 1);
     let divPariAffichage1 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection1)
-
     divPariAffichage1.textContent = "€"
     let divBoutonPlus1 = creerUnElement("", "divBoutonPlusClass", "div", divJoueurPariSelection1)
+    //switch pour la création de chaque div parent avec comme variante la couleur différente pour toutes
     switch (j) {
         case 0:
             divJoueur1.classList.add("divJoueurBleu")
@@ -64,21 +62,31 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
     
     
 
-divBoutonPlus1.addEventListener("click", () => {
-    createGlass()
-    let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-})
-divBoutonPlus2.addEventListener("click", () => {
-    createGlass()
-    let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-})
-divBoutonPlus3.addEventListener("click", () => {
-    createGlass()
-    let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-})
-divBoutonPlus4.addEventListener("click", () => {
-    createGlass()
-    let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
-})
+// divBoutonPlus1.addEventListener("click", () => {
+//     createGlass()
+//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
+// })
+// divBoutonPlus2.addEventListener("click", () => {
+//     createGlass()
+//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
+// })
+// divBoutonPlus3.addEventListener("click", () => {
+//     createGlass()
+//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
+// })
+// divBoutonPlus4.addEventListener("click", () => {
+//     createGlass()
+//     let popUpChoixDesPersonnages = creerUnElement("", "popUpChoixDesPersonnages", "div", glass)
+// })
 
-export {creationDivNombreDeJoueur}
+function popUpHistoriqueCombat() {
+    let divPopUpHC = creerUnElement("", "PUHC", "div", document.body)
+}
+
+
+
+
+export {creationDivNombreDeJoueur, popUpHistoriqueCombat}
+
+//let boutonHistorique = creerUnElement("", "historique", "div", document.body)
+
