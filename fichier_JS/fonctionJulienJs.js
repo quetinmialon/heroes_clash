@@ -22,9 +22,12 @@ let tunedujoueur = ["",1000,1000,1000,1000]
 function creationDivNombreDeJoueur(){
 for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
 
-    let divJoueurPariSelection1 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
-    let divJoueur1 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection1)
     
+    //création de la div parent de joueur
+    let divJoueurPariSelection1 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
+    //création des div enfants de divJoueurPariSelection 
+    let divJoueur1 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection1)
+    // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
     divJoueur1.textContent = "Joueur " + (j + 1);
     let divPariAffichage1 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection1)
     divPariAffichage1.textContent = `${tunedujoueur[j+1]}€`
@@ -60,6 +63,11 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
     divBoutonPlus1.textContent = "+"
 
 }
+}
+
+function popUpHistoriqueCombat () {
+let popUpHistoriqueC = document.creerUnElement("","popUpHistoriqueC", "div", document.body)
+createGlass()
 }
 
 export {creationDivNombreDeJoueur, tunedujoueur}
