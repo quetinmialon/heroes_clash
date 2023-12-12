@@ -1,7 +1,7 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
 import { creationDivNombreDeJoueur } from "./fonctionJulienJs.js"
-import { FboutonBibliotheque, boutonBibliotheque } from "./fonctionMathis.js"
+import { Fcreerbibliotheque, boutonBibliotheque } from "./fonctionMathis.js"
 
 // initialisation des variables au globales
 let glass
@@ -180,7 +180,7 @@ async function popUpChoixDesCombatants() {
             let boutonBibliotheque2 = creerUnElement("boutonBibliotheque","boutonBibliothèque","button",footer )
             boutonBibliotheque2.textContent = "Bibliothèque"
             boutonBibliotheque2.addEventListener("click", ()=>{
-                FboutonBibliotheque()
+                Fcreerbibliotheque()
             })
             boutonJouer2.textContent = "Combat"
             boutonJouer2.addEventListener("click",()=>{
