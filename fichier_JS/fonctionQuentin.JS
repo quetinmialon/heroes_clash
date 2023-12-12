@@ -22,7 +22,7 @@ async function popUpChoixDesCombatants() {
     createGlass();
     // initialisation des compteurs
     let compteurManche = 0;
-    let compteurJoueur = 1
+    let compteurJoueur = 2
     // création dynamique des différentes div imbriquées du popUp via la fonction creerUnElement()
     let popUpChoixDesCombatants = creerUnElement("", "popUpChoixDesCombatants", "div", glass);
     let headerCDC = creerUnElement("", "headerCDC", "div", popUpChoixDesCombatants);
@@ -37,7 +37,7 @@ async function popUpChoixDesCombatants() {
     // permet a l'utilisateur d'augmenter ou réduire le nombre de joueur avec un max de 4 et un min de 1 
     boutonMoinsCompteurJoueur.addEventListener("click", () => {
         if (compteurJoueur > 1) {
-            compteurJoueur--
+            compteurJoueur = compteurJoueur-2
             nombreDeJoueur.textContent = compteurJoueur
         }
     })
@@ -53,7 +53,7 @@ async function popUpChoixDesCombatants() {
     boutonPlusCompteurJoueur.setAttribute("src", "../dossierImage/carre-plus_blanc.svg")
     boutonPlusCompteurJoueur.addEventListener("click", () => {
         if (compteurJoueur < 4) {
-            compteurJoueur++
+            compteurJoueur = compteurJoueur+2
             nombreDeJoueur.textContent = compteurJoueur
         }
     })
@@ -157,14 +157,20 @@ async function popUpChoixDesCombatants() {
             const nombreDeRobot = compteurJoueur % 2 === 1 ? 1 : 0;
             // petite fonction ternaire pour faire plaisir a maxime B 
             //(vérifie si le nombre de joueur est pair ou impair et ajout un robot en fonction)
-            const herosSelectionnes = getHerosSelectionnes();
+            const herosSelectionnes4 = getHerosSelectionnes();
+            const herosSelectionnes1 = getHerosSelectionnes();
+            const herosSelectionnes2 = getHerosSelectionnes();
+            const herosSelectionnes3 = getHerosSelectionnes();
             const nombreDeManche = compteurManche
 
             // Crée l'objet avec les informations recupérées
             partieParams = {
                 nombreDeJoueur,
-                nombreDeRobot,
-                herosSelectionnes,
+                nombreDeRobot,                
+                herosSelectionnes1,
+                herosSelectionnes2,
+                herosSelectionnes3,
+                herosSelectionnes4,
                 nombreDeManche,
             };
             // ferme les pop UP de création de partie
@@ -180,7 +186,7 @@ async function popUpChoixDesCombatants() {
             let boutonBibliotheque2 = creerUnElement("boutonBibliotheque","boutonBibliothèque","button",footer )
             boutonBibliotheque2.textContent = "Bibliothèque"
             boutonBibliotheque2.addEventListener("click", ()=>{
-                Fcreerbibliotheque()
+                FcreerBibliotheque()
             })
             boutonJouer2.textContent = "Combat"
             boutonJouer2.addEventListener("click",()=>{
@@ -218,36 +224,137 @@ function createGlass() {
     });
 }
 
-function choixDuHéroAjouer() {
-    createGlass()
-    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass)
-    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ)
+function choixDuHéroAjouer1() {
+    createGlass();
+    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
+    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
 
-    for (let o = 0; o < partieParams.herosSelectionnes.length; o++) {
-        console.log("ça itère")
-        const heroId = partieParams.herosSelectionnes[o];
-        let heroData
+    if (partieParams.herosSelectionnes1) {
+        for (let o = 0; o < partieParams.herosSelectionnes1.length; o++) {
+            const heroId = partieParams.herosSelectionnes1[o];
+            let heroData;
 
-        // Recherche de l'index du héros dans tableHeroData en comparant les ID 
-        for (let k = 0; k < tableHeroData.length; k++) {
-            if (tableHeroData[k].id === heroId) {
-                heroData = tableHeroData[k];
-                break;
+            for (let k = 0; k < tableHeroData.length; k++) {
+                if (tableHeroData[k].id === heroId) {
+                    heroData = tableHeroData[k];
+                    break;
+                }
             }
+
+            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
+            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
+            HéroAChoisirCDHAJ.style.height = "8rem";
+            HéroAChoisirCDHAJ.style.width = "7.3rem";
+            HéroAChoisirCDHAJ.addEventListener("click", () => {
+                // Code à exécuter au clic sur l'image du héros
+            });
         }
-        let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ)
-        HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`)
-        HéroAChoisirCDHAJ.style.height = "8rem"
-        HéroAChoisirCDHAJ.style.width = "7.3rem"
-        HéroAChoisirCDHAJ.addEventListener("click", () => {
-            
-        })
     }
-    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ)
-    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg")
+
+    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
+    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
     randomPickHero.addEventListener("click", () => {
-        
-    })
+        // Code à exécuter au clic sur le bouton de choix aléatoire
+    });
 }
-export { glass, createGlass, partieParams, choixDuHéroAjouer }
+function choixDuHéroAjouer2() {
+    createGlass();
+    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
+    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
+
+    if (partieParams.herosSelectionnes2) {
+        for (let o = 0; o < partieParams.herosSelectionnes2.length; o++) {
+            const heroId = partieParams.herosSelectionnes2[o];
+            let heroData;
+
+            for (let k = 0; k < tableHeroData.length; k++) {
+                if (tableHeroData[k].id === heroId) {
+                    heroData = tableHeroData[k];
+                    break;
+                }
+            }
+
+            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
+            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
+            HéroAChoisirCDHAJ.style.height = "8rem";
+            HéroAChoisirCDHAJ.style.width = "7.3rem";
+            HéroAChoisirCDHAJ.addEventListener("click", () => {
+                // Code à exécuter au clic sur l'image du héros
+            });
+        }
+    }
+
+    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
+    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
+    randomPickHero.addEventListener("click", () => {
+        // Code à exécuter au clic sur le bouton de choix aléatoire
+    });
+}
+function choixDuHéroAjouer3() {
+    createGlass();
+    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
+    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
+
+    if (partieParams.herosSelectionnes3) {
+        for (let o = 0; o < partieParams.herosSelectionnes3.length; o++) {
+            const heroId = partieParams.herosSelectionnes3[o];
+            let heroData;
+
+            for (let k = 0; k < tableHeroData.length; k++) {
+                if (tableHeroData[k].id === heroId) {
+                    heroData = tableHeroData[k];
+                    break;
+                }
+            }
+
+            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
+            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
+            HéroAChoisirCDHAJ.style.height = "8rem";
+            HéroAChoisirCDHAJ.style.width = "7.3rem";
+            HéroAChoisirCDHAJ.addEventListener("click", () => {
+                // Code à exécuter au clic sur l'image du héros
+            });
+        }
+    }
+
+    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
+    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
+    randomPickHero.addEventListener("click", () => {
+        // Code à exécuter au clic sur le bouton de choix aléatoire
+    });
+}
+function choixDuHéroAjouer4() {
+    createGlass();
+    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
+    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
+
+    if (partieParams.herosSelectionnes4) {
+        for (let o = 0; o < partieParams.herosSelectionnes4.length; o++) {
+            const heroId = partieParams.herosSelectionnes4[o];
+            let heroData;
+
+            for (let k = 0; k < tableHeroData.length; k++) {
+                if (tableHeroData[k].id === heroId) {
+                    heroData = tableHeroData[k];
+                    break;
+                }
+            }
+
+            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
+            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
+            HéroAChoisirCDHAJ.style.height = "8rem";
+            HéroAChoisirCDHAJ.style.width = "7.3rem";
+            HéroAChoisirCDHAJ.addEventListener("click", () => {
+                // Code à exécuter au clic sur l'image du héros
+            });
+        }
+    }
+
+    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
+    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
+    randomPickHero.addEventListener("click", () => {
+        // Code à exécuter au clic sur le bouton de choix aléatoire
+    });
+}
+export { glass, createGlass, partieParams, choixDuHéroAjouer1, choixDuHéroAjouer2, choixDuHéroAjouer3, choixDuHéroAjouer4 }
 
