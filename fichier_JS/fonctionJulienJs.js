@@ -65,4 +65,9 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
 }
 }
 
+function popUpHistoriqueCombat () {
+let popUpHistoriqueC = document.creerUnElement("","popUpHistoriqueC", "div", document.body)
+createGlass()
+}
+
 export {creationDivNombreDeJoueur, tunedujoueur}
