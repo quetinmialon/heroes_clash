@@ -1,6 +1,6 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
-import { creationDivNombreDeJoueur } from "./fonctionJulienJs.js"
+import { creationDivNombreDeJoueur, tunedujoueur } from "./fonctionJulienJs.js"
 import { Fcreerbibliotheque, boutonBibliotheque } from "./fonctionMathis.js"
 
 // initialisation des variables au globales
@@ -8,6 +8,11 @@ let glass
 
 let partieParams = {}
 let footer = document.getElementById("footer")
+let manchePartie = {}
+let cimetièreJ1 = []
+let cimetièreJ2 = []
+let cimetièreJ3 = []
+let cimetièreJ4 = []
 
 // créer l'événement de lancement de partie
 let boutonJouer = document.getElementById("BoutonJouer")
@@ -228,37 +233,49 @@ function choixDuHéroAjouer(indexJoueur) {
     createGlass();
     let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
     let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
-
+ 
     const herosSelectionnes = partieParams[`herosSelectionnes${indexJoueur}`];
 
     if (herosSelectionnes) {
         for (let o = 0; o < herosSelectionnes.length; o++) {
             const heroId = herosSelectionnes[o];
-            let heroData;
-
-            for (let k = 0; k < tableHeroData.length; k++) {
-                if (tableHeroData[k].id === heroId) {
-                    heroData = tableHeroData[k];
-                    break;
-                }
-            }
+            let heroData = tableHeroData.find(hero => hero.id === heroId);
 
             let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
             HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
             HéroAChoisirCDHAJ.style.height = "8rem";
             HéroAChoisirCDHAJ.style.width = "7.3rem";
             HéroAChoisirCDHAJ.addEventListener("click", () => {
-                // Code à exécuter au clic sur l'image du héros
+                // Supprime l'élément du tableau herosSelectionnes pour le joueur actuel
+                const indexDansHerosSelectionnes = partieParams[`herosSelectionnes${indexJoueur}`].indexOf(heroId);
+                    let choixParis = creerUnElement("","CPconteneur","div",glass)
+                    let footerCP = creerUnElement("","footerCP","div",choixParis)
+                    let parisCP = creerUnElement (`parisCP${indexJoueur}`,"parisCP","input",footerCP)
+                    parisCP.setAttribute ("type","number")
+                    parisCP.setAttribute ("step","100")
+                    let monnaieCP = creerUnElement("","monnaieCP","div",footerCP)
+                    monnaieCP.textContent = "€"
+                    let buttonValider = creerUnElement(`buttonValider${indexJoueur}`,"boutonBibliothèque","div",footerCP)
+                    buttonValider.addEventListener("click",()=>{
+                        tunedujoueur[`${indexJoueur}`+1] = tunedujoueur[`${indexJoueur}`+1] - parseInt(parisCP.value)
+                        if (indexDansHerosSelectionnes !== -1) {
+                            partieParams[`herosSelectionnes${indexJoueur}`].splice(indexDansHerosSelectionnes, 1);
+                            eval(`cimetièreJ${indexJoueur}`).push(heroId);
+
+
+                            console.log( eval(`cimetièreJ${indexJoueur}`))
+                        }
+                        console.log(tunedujoueur)                        
+                    })
+
+
+                // Ajoute le code spécifique à exécuter au clic sur l'image du héros ici
             });
         }
     }
-
-    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ);
-    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg");
-    randomPickHero.addEventListener("click", () => {
-        // Code à exécuter au clic sur le bouton de choix aléatoire
-    });
 }
+
+
 
 export { glass, createGlass, partieParams, choixDuHéroAjouer}
 
