@@ -137,7 +137,7 @@ function creationDivNombreDeJoueur() {
 
     }
 }
-
+}
 function popUpHistoriqueCombat () {
     createGlass()
     let popUpHistoriqueC = document.creerUnElement("","popUpHistoriqueC", "div", document.body)
