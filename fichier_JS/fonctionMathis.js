@@ -2,9 +2,9 @@ import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero } from "./variableGlobale.js"
 import { glass, createGlass } from "./fonctionQuentin.JS"
 
-console.log(tableHeroData, "tableHeroData")
+//console.log(tableHeroData, "tableHeroData")
 let boutonBibliotheque = document.getElementById("Bibliothèque")
-console.log(tableOfHero, "tableOfHero")
+//console.log(tableOfHero, "tableOfHero")
 boutonBibliotheque.addEventListener("click", () => {
     Fcreerbibliotheque()
 })

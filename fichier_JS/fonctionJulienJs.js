@@ -10,8 +10,11 @@ let divGlobalePageNouvellePartie = creerUnElement("", "divGlobalePageNouvellePar
 
 let pageGlobal = document.getElementById("pageGlobal")
 
-let tunedujoueur = ["", 1000, 1000, 1000, 1000]
-
+let tunedujoueur = ["",1000,1000,1000,1000]
+let divPariAffichage3
+let divPariAffichage4
+let divPariAffichage2
+let divPariAffichage1
 
 
 
@@ -56,28 +59,89 @@ function creationDivNombreDeJoueur() {
                 divBoutonPlus1.classList.add("divJoueurVert")
                 divJoueurPariSelection1.classList.add("signeDollarVert")
                 break;
+    switch (j) {
+        case 0:
+            let divJoueurPariSelection1 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
+            //création des div enfants de divJoueurPariSelection 
+            let divJoueur1 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection1)
+            // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
+            divJoueur1.textContent = "Joueur " + (j + 1);
+             divPariAffichage1 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection1)
+            divPariAffichage1.textContent = `${tunedujoueur[j+1]}€`
+            let divBoutonPlus1 = creerUnElement("divBoutonPlus1", "divBoutonPlusClass", "div", divJoueurPariSelection1)
+            divJoueur1.classList.add("divJoueurBleu")
+            divBoutonPlus1.classList.add("divJoueurBleu")
+            divJoueurPariSelection1.classList.add("signeDollarBleu")
+            divBoutonPlus1.textContent = "+"
+            divBoutonPlus1.addEventListener("click",()=>{
+                choixDuHéroAjouer(1)
+            })
+            break;
 
-            default:
-                break;
-        }
-        divBoutonPlus1.textContent = "+"
+        case 1:
+            let divJoueurPariSelection2 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
+            //création des div enfants de divJoueurPariSelection 
+            let divJoueur2 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection2)
+            // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
+            divJoueur2.textContent = "Joueur " + (j + 1);
+             divPariAffichage2 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection2)
+            divPariAffichage2.textContent = `${tunedujoueur[j+1]}€`
+            let divBoutonPlus2 = creerUnElement("divBoutonPlus2", "divBoutonPlusClass", "div", divJoueurPariSelection2)
+            divJoueur2.classList.add("divJoueurJaune")
+            divBoutonPlus2.classList.add("divJoueurJaune")
+            divJoueurPariSelection2.classList.add("signeDollarJaune")
+            divBoutonPlus2.textContent = "+"
+            divBoutonPlus2.addEventListener("click",()=>{
+                choixDuHéroAjouer(2)
+            })
+            break;
+        case 2:
+            let divJoueurPariSelection3 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
+            //création des div enfants de divJoueurPariSelection 
+            let divJoueur3 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection3)
+            // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
+            divJoueur3.textContent = "Joueur " + (j + 1);
+            divPariAffichage3 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection3)
+            divPariAffichage3.textContent = `${tunedujoueur[j+1]}€`
+            let divBoutonPlus3 = creerUnElement("divBoutonPlus3", "divBoutonPlusClass", "div", divJoueurPariSelection3)
+            divJoueur3.classList.add("divJoueurTurquoise")
+            divBoutonPlus3.classList.add("divJoueurTurquoise")
+            divJoueurPariSelection3.classList.add("signeDollarTurquoise")
+            divBoutonPlus3.textContent = "+"
+            divBoutonPlus3.addEventListener("click",()=>{
+                choixDuHéroAjouer(3)
+            })
+            break;
+        case 3:
+            let divJoueurPariSelection4 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
+            //création des div enfants de divJoueurPariSelection 
+            let divJoueur4 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection4)
+            // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
+            divJoueur4.textContent = "Joueur " + (j + 1);
+            divPariAffichage4 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection4)
+            divPariAffichage4.textContent = `${tunedujoueur[j+1]}€`
+            let divBoutonPlus4 = creerUnElement("divBoutonPlus4", "divBoutonPlusClass", "div", divJoueurPariSelection4)
+            divJoueur4.classList.add("divJoueurVert")
+            divBoutonPlus4.classList.add("divJoueurVert")
+            divJoueurPariSelection4.classList.add("signeDollarVert")
+            divBoutonPlus4.textContent = "+"
+            divBoutonPlus4.addEventListener("click",()=>{
+                choixDuHéroAjouer(4)
+            })
+            break;
+
+        default:
+            break;
+    }
+    
 
     }
 }
-// je veux que l'historique me montre les images et le nom de chaque combatant vs un 
-// autre combatant et le résultat de la partie, exemple hulk à battue iron Man
-// je veux le nom du combatant ou juste l'image afficher vs le combatant pour une comparaison
-let tableauHistoriqueDesManche = [{
-    nom: "hulk",
-    imageId: "hulk",
 
-}]
-
-
-function popUpHistoriqueCombat() {
+function popUpHistoriqueCombat () {
     createGlass()
-    let popUpHistoriqueC = document.creerUnElement("", "popUpHistoriqueC", "div", glass)
+    let popUpHistoriqueC = document.creerUnElement("","popUpHistoriqueC", "div", document.body)
 
 }
 
-export { creationDivNombreDeJoueur, tunedujoueur }
+export {creationDivNombreDeJoueur, tunedujoueur, divPariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4}

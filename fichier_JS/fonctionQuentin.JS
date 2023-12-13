@@ -1,13 +1,18 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
-import { creationDivNombreDeJoueur } from "./fonctionJulienJs.js"
-import { Fcreerbibliotheque, boutonBibliotheque } from "./fonctionMathis.js"
+import { creationDivNombreDeJoueur, tunedujoueur,PariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4  } from "./fonctionJulienJs.js"
+import { Fcreerbibliotheque, boutonBibliotheque} from "./fonctionMathis.js"
 
 // initialisation des variables au globales
 let glass
 
 let partieParams = {}
 let footer = document.getElementById("footer")
+let manchePartie = {}
+let cimetièreJ1 = []
+let cimetièreJ2 = []
+let cimetièreJ3 = []
+let cimetièreJ4 = []
 
 // créer l'événement de lancement de partie
 let boutonJouer = document.getElementById("BoutonJouer")
@@ -22,7 +27,7 @@ async function popUpChoixDesCombatants() {
     createGlass();
     // initialisation des compteurs
     let compteurManche = 0;
-    let compteurJoueur = 1
+    let compteurJoueur = 2
     // création dynamique des différentes div imbriquées du popUp via la fonction creerUnElement()
     let popUpChoixDesCombatants = creerUnElement("", "popUpChoixDesCombatants", "div", glass);
     let headerCDC = creerUnElement("", "headerCDC", "div", popUpChoixDesCombatants);
@@ -37,7 +42,7 @@ async function popUpChoixDesCombatants() {
     // permet a l'utilisateur d'augmenter ou réduire le nombre de joueur avec un max de 4 et un min de 1 
     boutonMoinsCompteurJoueur.addEventListener("click", () => {
         if (compteurJoueur > 1) {
-            compteurJoueur--
+            compteurJoueur = compteurJoueur-2
             nombreDeJoueur.textContent = compteurJoueur
         }
     })
@@ -53,7 +58,7 @@ async function popUpChoixDesCombatants() {
     boutonPlusCompteurJoueur.setAttribute("src", "../dossierImage/carre-plus_blanc.svg")
     boutonPlusCompteurJoueur.addEventListener("click", () => {
         if (compteurJoueur < 4) {
-            compteurJoueur++
+            compteurJoueur = compteurJoueur+2
             nombreDeJoueur.textContent = compteurJoueur
         }
     })
@@ -157,14 +162,20 @@ async function popUpChoixDesCombatants() {
             const nombreDeRobot = compteurJoueur % 2 === 1 ? 1 : 0;
             // petite fonction ternaire pour faire plaisir a maxime B 
             //(vérifie si le nombre de joueur est pair ou impair et ajout un robot en fonction)
-            const herosSelectionnes = getHerosSelectionnes();
+            const herosSelectionnes4 = getHerosSelectionnes();
+            const herosSelectionnes1 = getHerosSelectionnes();
+            const herosSelectionnes2 = getHerosSelectionnes();
+            const herosSelectionnes3 = getHerosSelectionnes();
             const nombreDeManche = compteurManche
 
             // Crée l'objet avec les informations recupérées
             partieParams = {
                 nombreDeJoueur,
-                nombreDeRobot,
-                herosSelectionnes,
+                nombreDeRobot,                
+                herosSelectionnes1,
+                herosSelectionnes2,
+                herosSelectionnes3,
+                herosSelectionnes4,
                 nombreDeManche,
             };
             // ferme les pop UP de création de partie
@@ -180,7 +191,7 @@ async function popUpChoixDesCombatants() {
             let boutonBibliotheque2 = creerUnElement("boutonBibliotheque","boutonBibliothèque","button",footer )
             boutonBibliotheque2.textContent = "Bibliothèque"
             boutonBibliotheque2.addEventListener("click", ()=>{
-                Fcreerbibliotheque()
+                FcreerBibliotheque()
             })
             boutonJouer2.textContent = "Combat"
             boutonJouer2.addEventListener("click",()=>{
@@ -218,36 +229,55 @@ function createGlass() {
     });
 }
 
-function choixDuHéroAjouer() {
-    createGlass()
-    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass)
-    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ)
+function choixDuHéroAjouer(indexJoueur) {
+    createGlass();
+    let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
+    let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
+ 
+    const herosSelectionnes = partieParams[`herosSelectionnes${indexJoueur}`];
 
-    for (let o = 0; o < partieParams.herosSelectionnes.length; o++) {
-        console.log("ça itère")
-        const heroId = partieParams.herosSelectionnes[o];
-        let heroData
+    if (herosSelectionnes) {
+        for (let o = 0; o < herosSelectionnes.length; o++) {
+            const heroId = herosSelectionnes[o];
+            let heroData = tableHeroData.find(hero => hero.id === heroId);
 
-        // Recherche de l'index du héros dans tableHeroData en comparant les ID 
-        for (let k = 0; k < tableHeroData.length; k++) {
-            if (tableHeroData[k].id === heroId) {
-                heroData = tableHeroData[k];
-                break;
-            }
+            let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
+            HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
+            HéroAChoisirCDHAJ.style.height = "8rem";
+            HéroAChoisirCDHAJ.style.width = "7.3rem";
+            HéroAChoisirCDHAJ.addEventListener("click", () => {
+                // Supprime l'élément du tableau herosSelectionnes pour le joueur actuel
+                const indexDansHerosSelectionnes = partieParams[`herosSelectionnes${indexJoueur}`].indexOf(heroId);
+                    let choixParis = creerUnElement("","CPconteneur","div",glass)
+                    let footerCP = creerUnElement("","footerCP","div",choixParis)
+                    let parisCP = creerUnElement (`parisCP${indexJoueur}`,"parisCP","input",footerCP)
+                    parisCP.setAttribute ("type","number")
+                    parisCP.setAttribute ("step","100")
+                    let monnaieCP = creerUnElement("","monnaieCP","div",footerCP)
+                    monnaieCP.textContent = "€"
+                    let buttonValider = creerUnElement(`buttonValider${indexJoueur}`,"boutonBibliothèque","div",footerCP)
+                    buttonValider.addEventListener("click",()=>{
+                        tunedujoueur[`${indexJoueur}`] = tunedujoueur[`${indexJoueur}`] - parseInt(parisCP.value)
+                        do {
+                            glass.firstChild.remove();
+                        } while (glass.firstChild);
+                        glass.remove();
+                        eval(`divPariAffichage${indexJoueur}`).textContent = tunedujoueur[`${indexJoueur}`]   
+                        if (indexDansHerosSelectionnes !== -1) {
+                            partieParams[`herosSelectionnes${indexJoueur}`].splice(indexDansHerosSelectionnes, 1);
+                            eval(`cimetièreJ${indexJoueur}`).push(parseInt(heroId));
+                        }
+                                             
+                    })
+
+
+                // Ajoute le code spécifique à exécuter au clic sur l'image du héros ici
+            });
         }
-        let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ)
-        HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`)
-        HéroAChoisirCDHAJ.style.height = "8rem"
-        HéroAChoisirCDHAJ.style.width = "7.3rem"
-        HéroAChoisirCDHAJ.addEventListener("click", () => {
-            
-        })
     }
-    let randomPickHero = creerUnElement("", "randomPickHero", "img", conteneurParentCDHAJ)
-    randomPickHero.setAttribute("src", "../dossierImage/melanger_blanc.svg")
-    randomPickHero.addEventListener("click", () => {
-        
-    })
 }
-export { glass, createGlass, partieParams, choixDuHéroAjouer }
+
+
+
+export { glass, createGlass, partieParams, choixDuHéroAjouer, cimetièreJ1, cimetièreJ2, cimetièreJ3, cimetièreJ4}
 
