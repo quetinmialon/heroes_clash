@@ -257,15 +257,17 @@ function choixDuHéroAjouer(indexJoueur) {
                     monnaieCP.textContent = "€"
                     let buttonValider = creerUnElement(`buttonValider${indexJoueur}`,"boutonBibliothèque","div",footerCP)
                     buttonValider.addEventListener("click",()=>{
-                        tunedujoueur[`${indexJoueur}`+1] = tunedujoueur[`${indexJoueur}`+1] - parseInt(parisCP.value)
+                        tunedujoueur[`${indexJoueur}`] = tunedujoueur[`${indexJoueur}`] - parseInt(parisCP.value)
+                        do {
+                            glass.firstChild.remove();
+                        } while (glass.firstChild);
+                        glass.remove();
+                        //divPariAffichage1.textContent = tunedujoueur[`${indexJoueur}`]   
                         if (indexDansHerosSelectionnes !== -1) {
                             partieParams[`herosSelectionnes${indexJoueur}`].splice(indexDansHerosSelectionnes, 1);
-                            eval(`cimetièreJ${indexJoueur}`).push(heroId);
-
-
-                            console.log( eval(`cimetièreJ${indexJoueur}`))
+                            eval(`cimetièreJ${indexJoueur}`).push(parseInt(heroId));
                         }
-                        console.log(tunedujoueur)                        
+                                             
                     })
 
 
@@ -277,5 +279,5 @@ function choixDuHéroAjouer(indexJoueur) {
 
 
 
-export { glass, createGlass, partieParams, choixDuHéroAjouer}
+export { glass, createGlass, partieParams, choixDuHéroAjouer, cimetièreJ1, cimetièreJ2, cimetièreJ3, cimetièreJ4}
 
