@@ -11,7 +11,10 @@ let divGlobalePageNouvellePartie = creerUnElement ("","divGlobalePageNouvellePar
 let pageGlobal = document.getElementById("pageGlobal")
 
 let tunedujoueur = ["",1000,1000,1000,1000]
-
+let divPariAffichage3
+let divPariAffichage4
+let divPariAffichage2
+let divPariAffichage1
 
 
 
@@ -29,7 +32,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             let divJoueur1 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection1)
             // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
             divJoueur1.textContent = "Joueur " + (j + 1);
-            let divPariAffichage1 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection1)
+             divPariAffichage1 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection1)
             divPariAffichage1.textContent = `${tunedujoueur[j+1]}€`
             let divBoutonPlus1 = creerUnElement("divBoutonPlus1", "divBoutonPlusClass", "div", divJoueurPariSelection1)
             divJoueur1.classList.add("divJoueurBleu")
@@ -47,7 +50,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             let divJoueur2 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection2)
             // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
             divJoueur2.textContent = "Joueur " + (j + 1);
-            let divPariAffichage2 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection2)
+             divPariAffichage2 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection2)
             divPariAffichage2.textContent = `${tunedujoueur[j+1]}€`
             let divBoutonPlus2 = creerUnElement("divBoutonPlus2", "divBoutonPlusClass", "div", divJoueurPariSelection2)
             divJoueur2.classList.add("divJoueurJaune")
@@ -64,7 +67,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             let divJoueur3 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection3)
             // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
             divJoueur3.textContent = "Joueur " + (j + 1);
-            let divPariAffichage3 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection3)
+            divPariAffichage3 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection3)
             divPariAffichage3.textContent = `${tunedujoueur[j+1]}€`
             let divBoutonPlus3 = creerUnElement("divBoutonPlus3", "divBoutonPlusClass", "div", divJoueurPariSelection3)
             divJoueur3.classList.add("divJoueurTurquoise")
@@ -81,7 +84,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             let divJoueur4 = creerUnElement("", "divJoueurClass", "div", divJoueurPariSelection4)
             // définition de l'appellation du joueur par un j + 1 ajouter après le textContent "joueur"
             divJoueur4.textContent = "Joueur " + (j + 1);
-            let divPariAffichage4 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection4)
+            divPariAffichage4 = creerUnElement("", "divPariAffichageClass", "div", divJoueurPariSelection4)
             divPariAffichage4.textContent = `${tunedujoueur[j+1]}€`
             let divBoutonPlus4 = creerUnElement("divBoutonPlus4", "divBoutonPlusClass", "div", divJoueurPariSelection4)
             divJoueur4.classList.add("divJoueurVert")
@@ -107,4 +110,4 @@ function popUpHistoriqueCombat () {
 
 }
 
-export {creationDivNombreDeJoueur, tunedujoueur}
+export {creationDivNombreDeJoueur, tunedujoueur, divPariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4}
