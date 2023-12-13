@@ -1,6 +1,6 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
-import { creationDivNombreDeJoueur, tunedujoueur,PariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4  } from "./fonctionJulienJs.js"
+import { creationDivNombreDeJoueur, tunedujoueur,divPariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4  } from "./fonctionJulienJs.js"
 import { Fcreerbibliotheque, boutonBibliotheque} from "./fonctionMathis.js"
 
 // initialisation des variables au globales
@@ -262,7 +262,7 @@ function choixDuHéroAjouer(indexJoueur) {
                             glass.firstChild.remove();
                         } while (glass.firstChild);
                         glass.remove();
-                        eval(`divPariAffichage${indexJoueur}`).textContent = tunedujoueur[`${indexJoueur}`]   
+                        eval(`divPariAffichage${indexJoueur}`).textContent = tunedujoueur[`${indexJoueur}`] + "€"   
                         if (indexDansHerosSelectionnes !== -1) {
                             partieParams[`herosSelectionnes${indexJoueur}`].splice(indexDansHerosSelectionnes, 1);
                             eval(`cimetièreJ${indexJoueur}`).push(parseInt(heroId));
