@@ -1,7 +1,7 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
-import { creationDivNombreDeJoueur, tunedujoueur } from "./fonctionJulienJs.js"
-import { Fcreerbibliotheque, boutonBibliothequedivPariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4 } from "./fonctionMathis.js"
+import { creationDivNombreDeJoueur, tunedujoueur,PariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4  } from "./fonctionJulienJs.js"
+import { Fcreerbibliotheque, boutonBibliotheque} from "./fonctionMathis.js"
 
 // initialisation des variables au globales
 let glass
