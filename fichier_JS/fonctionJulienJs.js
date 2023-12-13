@@ -24,7 +24,7 @@ let divPariAffichage1
 //création d'une boucle for pour ajouter la div correspondant
 function creationDivNombreDeJoueur(){
 for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
-
+    // utilisation d'un switch case pour créer le nombre précisé de joueur dans partieParam
     switch (j) {
         case 0:
             let divJoueurPariSelection1 = creerUnElement("", "divJoueurPariSelection", "div", divGlobalePageNouvellePartie)
@@ -40,6 +40,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
             divJoueurPariSelection1.classList.add("signeDollarBleu")
             divBoutonPlus1.textContent = "+"
             divBoutonPlus1.addEventListener("click",()=>{
+                // appel de la fonction de Quentin attendant en parametre l'indexdujoueur en cours( 1 pour Joueur1 ) 
                 choixDuHéroAjouer(1)
             })
             break;
@@ -103,7 +104,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
 
 }
 }
-
+// fonction de popUphistorique à venir 
 function popUpHistoriqueCombat () {
     createGlass()
     let popUpHistoriqueC = document.creerUnElement("","popUpHistoriqueC", "div", document.body)

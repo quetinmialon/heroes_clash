@@ -1,7 +1,7 @@
 import { creerUnElement, tableHeroData } from "./fonctionsGlobales.js"
 import { tableOfHero, } from "./variableGlobale.js"
 import { creationDivNombreDeJoueur, tunedujoueur,divPariAffichage1, divPariAffichage2, divPariAffichage3, divPariAffichage4  } from "./fonctionJulienJs.js"
-import { Fcreerbibliotheque, boutonBibliotheque} from "./fonctionMathis.js"
+import { Fcreerbibliotheque, boutonBibliotheque, CimetierePopUp} from "./fonctionMathis.js"
 
 // initialisation des variables au globales
 let glass
@@ -13,6 +13,12 @@ let cimetièreJ1 = []
 let cimetièreJ2 = []
 let cimetièreJ3 = []
 let cimetièreJ4 = []
+
+let manche = {}
+let parisJ1
+let parisJ2
+let parisJ3
+let parisJ4
 
 // créer l'événement de lancement de partie
 let boutonJouer = document.getElementById("BoutonJouer")
@@ -159,9 +165,10 @@ async function popUpChoixDesCombatants() {
         if (compteurManche >= 1) {
             // Récupère les informations nécessaires
             const nombreDeJoueur = compteurJoueur;
-            const nombreDeRobot = compteurJoueur % 2 === 1 ? 1 : 0;
+            const nombreDeRobot = compteurJoueur % 2 === 1 ? 1 : 0; 
             // petite fonction ternaire pour faire plaisir a maxime B 
             //(vérifie si le nombre de joueur est pair ou impair et ajout un robot en fonction)
+            // finalement on a pas eu le temps de faire la partie combat donc encore moins de temps pour une partie robot... rip LOL
             const herosSelectionnes4 = getHerosSelectionnes();
             const herosSelectionnes1 = getHerosSelectionnes();
             const herosSelectionnes2 = getHerosSelectionnes();
@@ -178,26 +185,34 @@ async function popUpChoixDesCombatants() {
                 herosSelectionnes4,
                 nombreDeManche,
             };
-            // ferme les pop UP de création de partie
+            // ferme les pop UP de création de partie, supprime les boutons de la page d'accueil et le recréer dynamiquement
             do {
                 glass.firstChild.remove();
             } while (glass.firstChild);
             glass.remove();
             boutonJouer.remove()
             boutonBibliotheque.remove()
+            // lancement de la fonction de Julien qui affiche le nombre d'interface joueur selectionnés
             creationDivNombreDeJoueur()
             footer = creerUnElement("footer","footer","footer",document.body)
             let boutonJouer2 = creerUnElement("boutonJouer","boutonJouer","button",footer)
             let boutonBibliotheque2 = creerUnElement("boutonBibliotheque","boutonBibliothèque","button",footer )
             boutonBibliotheque2.textContent = "Bibliothèque"
             boutonBibliotheque2.addEventListener("click", ()=>{
-                FcreerBibliotheque()
+                Fcreerbibliotheque()
             })
             boutonJouer2.textContent = "Combat"
             boutonJouer2.addEventListener("click",()=>{
+                // fonction de lancement de la manche, malheureusement pas encore finie
                 lancerLeCombat()
             })
-            
+            // bouton cimetière qui lance la fonction de mathis 
+            let boutonCimetiere = creerUnElement("boutonCimetiere_ID","boutonCimetiere_Class","img",document.body)
+            boutonCimetiere.setAttribute("src","../dossierImage/cimetiere.png")
+            boutonCimetiere.addEventListener("click",()=>{
+                CimetierePopUp()
+            })
+            // renvoie l'élément partieParams, remplie des données de la partie à jouer
             return partieParams;
         }
     });
@@ -205,13 +220,19 @@ async function popUpChoixDesCombatants() {
 }
 // fonction qui permet de recuperer les ID des héro checké et les places dans un tableau
 function getHerosSelectionnes() {
+    // déclaration d'un tableau temporaire pour stocker les info de l'API
     const herosSelectionnes = [];
     for (let i = 0; i < tableOfHero.length; i++) {
+        // recupèré et vérifie si les checkboxes sont validées ou non 
         const checkBoxe = document.getElementById(`checkboxe${i}`);
         if (checkBoxe.checked) {
+            //si la checkboxe est validé, ajout de l'ID API du héro correspondant a la 
+            //checkboxe dans le tableau temporaire herosSelectionnés depuis tableherodata 
+            //(qui contient les données de l'api)
             herosSelectionnes.push(tableHeroData[i].id);
         }
     }
+    //renvoie le tableau temporaire créée 
     return herosSelectionnes;
 }
 // fonction créant une "div écran" empechant de cliquer "en desous" des éléments du popUp créer par la suite
@@ -228,26 +249,35 @@ function createGlass() {
         }
     });
 }
-
+// fonction qui attend comme parametre l'index du joueur pour bien différencier les actions des différents joueurs
 function choixDuHéroAjouer(indexJoueur) {
     createGlass();
+    //création dynamique des éléments pour le choix du héro a jouer
     let conteneurParentCDHAJ = creerUnElement("", "conteneurParentCDHAJ", "div", glass);
     let divParentCDHAJ = creerUnElement("", "divParentCDHAJ", "div", conteneurParentCDHAJ);
- 
+ //déclaration d'une variable herosSelectionnés qui recupère le tableau du joueur en cours avec les ID API des héro
+ //qui sont stockés dans l'objet partieParams
     const herosSelectionnes = partieParams[`herosSelectionnes${indexJoueur}`];
-
+// ajout d'une condition d'existance de herosSelectionnés pour s'assurer que l'étape précédente a bien fonctionné
     if (herosSelectionnes) {
+        //boucle for pour itérér dans le tableau créer
         for (let o = 0; o < herosSelectionnes.length; o++) {
+            // assignation de la case en cours a une variable temporaire heroID
             const heroId = herosSelectionnes[o];
+            // recherche dans tableHeroData (contenant toutes les info de l'API) si heroID correspond à
+            //l'ID d'un héro, si oui, alors assignation de l'objet a la variable temporaire heroData
             let heroData = tableHeroData.find(hero => hero.id === heroId);
 
             let HéroAChoisirCDHAJ = creerUnElement("", "HéroAChoisirCDHAJ", "img", divParentCDHAJ);
+            // assignation de l'image du héro stocké dans heroData 
             HéroAChoisirCDHAJ.setAttribute("src", `${heroData.image.url}`);
             HéroAChoisirCDHAJ.style.height = "8rem";
             HéroAChoisirCDHAJ.style.width = "7.3rem";
             HéroAChoisirCDHAJ.addEventListener("click", () => {
-                // Supprime l'élément du tableau herosSelectionnes pour le joueur actuel
+                // utilisation de la technique ".indexOf" pour récuperer l'index du hero selectionné 
+                //dans le tableau du joueur en cours de selection
                 const indexDansHerosSelectionnes = partieParams[`herosSelectionnes${indexJoueur}`].indexOf(heroId);
+                    // création dynamique des div du choix du paris
                     let choixParis = creerUnElement("","CPconteneur","div",glass)
                     let footerCP = creerUnElement("","footerCP","div",choixParis)
                     let parisCP = creerUnElement (`parisCP${indexJoueur}`,"parisCP","input",footerCP)
@@ -255,20 +285,40 @@ function choixDuHéroAjouer(indexJoueur) {
                     parisCP.setAttribute ("step","100")
                     let monnaieCP = creerUnElement("","monnaieCP","div",footerCP)
                     monnaieCP.textContent = "€"
-                    let buttonValider = creerUnElement(`buttonValider${indexJoueur}`,"boutonBibliothèque","div",footerCP)
+                    let buttonValider = creerUnElement(`buttonValider${indexJoueur}`,"boutonBibliothèque","div",choixParis)
+                    buttonValider.textContent = "Parier"
+                    // écouteur d'événement sur le bouton valider le paris
                     buttonValider.addEventListener("click",()=>{
+                        // vérifie que le paris ne soit pas nul ou négatif
+                        if(parisCP.value > 0){
+                            // soustraction du montant du paris dans le tableau tunedujoueur
                         tunedujoueur[`${indexJoueur}`] = tunedujoueur[`${indexJoueur}`] - parseInt(parisCP.value)
+                            // une fois le paris valider, les div se ferment
                         do {
                             glass.firstChild.remove();
                         } while (glass.firstChild);
                         glass.remove();
+                            //utilisation de la technique eval() pour appliquer un texte à des variables dynamiquement
+                            //texte du montant d'argent disponnible mis à jour pour le joueur
                         eval(`divPariAffichage${indexJoueur}`).textContent = tunedujoueur[`${indexJoueur}`] + "€"   
-                        if (indexDansHerosSelectionnes !== -1) {
+                        
+                            // retrait du héro choisi par le joueur de son tableau de joueur disponnible en utilisant la technique splice 
+                            // et en utilisant la const indexdansheroselectionnés pour retirer le héro choisi
                             partieParams[`herosSelectionnes${indexJoueur}`].splice(indexDansHerosSelectionnes, 1);
+
+                            // ajout du héro choisi dans le cimetière du joueur en cours
                             eval(`cimetièreJ${indexJoueur}`).push(parseInt(heroId));
-                        }
-                                             
-                    })
+                    // assignation des différents info de la manche a l'objet manche qui sert de base pour la fonction combat et historique (à venir)  
+                    eval(`parisJ${indexJoueur}`) = parseInt(parisCP.value)
+                    manche = {
+                        parisJ1,
+                        parisJ2,
+                        parisJ3,
+                        parisJ4,
+                    }
+                    
+                                           
+            }else {alert("entrez un paris")}})
 
 
                 // Ajoute le code spécifique à exécuter au clic sur l'image du héros ici

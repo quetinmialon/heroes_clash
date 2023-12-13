@@ -15,7 +15,8 @@ function creerUnElement(id, classe, typeElement, elementParent) {
 }
 
 async function fetchOneSuperHero(i) {
-    //fonction faisant lien avec l'api super hero, le parametre "i" attend l'ID d'un héro
+    //fonction faisant lien avec l'api super hero, le parametre "i" attend 
+    //l'ID API d'un héro (les id sont dispo sur le site de l'api)
     let url = `https://www.superheroapi.com/api.php/3573902879493747/${i}`;
     try {
         const response = await fetch(url);
