@@ -8,6 +8,7 @@ let boutonBibliotheque = document.getElementById("Bibliothèque")
 boutonBibliotheque.addEventListener("click", () => {
     Fcreerbibliotheque()
 })
+console.log(tableHeroData)
 //fonction de la bibliothèque
 function Fcreerbibliotheque() {
     //mise en place de la glasse pour pouvoir clicker en dehors de la fenetre pour la fermer
@@ -24,6 +25,7 @@ function Fcreerbibliotheque() {
     let ligne2 = creerUnElement("ligne2", "ligne2", "div", conteneurPrincipal)
     //Conteneur du tableau de heros
     let ligne2_ColonneGauche = creerUnElement("ligne2_ColonneGauche_ID", "ligne2_ColonneGauche_Class", "div", ligne2)
+
     //tableau des heros choisi dans l'api
     for (let i = 0; i < tableOfHero.length; i++) {
         //conteneur du tableau

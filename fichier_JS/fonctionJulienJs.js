@@ -104,7 +104,7 @@ for (let j = 0; j < partieParams.nombreDeJoueur; j++) {
 
 }
 }
-// fonction de popUphistorique à venir 
+// fonction de popUphistorique à venir
 function popUpHistoriqueCombat () {
     createGlass()
     let popUpHistoriqueC = document.creerUnElement("","popUpHistoriqueC", "div", document.body)

@@ -28,7 +28,7 @@ boutonJouer.addEventListener("click", () => {
 
 // attention la grosse fonction elle est coton celle la
 
-async function popUpChoixDesCombatants() {
+function popUpChoixDesCombatants() {
     //commence par créer une " div écran" pour empecher de cliquer "en dessous" des éléments du popUp
     createGlass();
     // initialisation des compteurs
@@ -100,7 +100,8 @@ async function popUpChoixDesCombatants() {
         });
 
         let divStats
-        // créer un élément image puis attribu l'url présent dans l'objet temporaire allData (qui correspond a ce qui a été recupérer dans l'API)
+        // créer un élément image puis attribu l'url présent dans l'objet temporaire 
+        //allData (qui correspond a ce qui a été recupérer dans l'API)
         let imageCDC = creerUnElement(`image${i}`, "imageCDC", "img", divCheckImage);
         imageCDC.setAttribute("src", allData.image.url);
         // création d'un popUp au survol des images des Héros renvoyant les stats recupèrée dans l'api puis stocké dans allData
@@ -168,7 +169,6 @@ async function popUpChoixDesCombatants() {
             const nombreDeRobot = compteurJoueur % 2 === 1 ? 1 : 0; 
             // petite fonction ternaire pour faire plaisir a maxime B 
             //(vérifie si le nombre de joueur est pair ou impair et ajout un robot en fonction)
-            // finalement on a pas eu le temps de faire la partie combat donc encore moins de temps pour une partie robot... rip LOL
             const herosSelectionnes4 = getHerosSelectionnes();
             const herosSelectionnes1 = getHerosSelectionnes();
             const herosSelectionnes2 = getHerosSelectionnes();
@@ -308,20 +308,12 @@ function choixDuHéroAjouer(indexJoueur) {
 
                             // ajout du héro choisi dans le cimetière du joueur en cours
                             eval(`cimetièreJ${indexJoueur}`).push(parseInt(heroId));
-                    // assignation des différents info de la manche a l'objet manche qui sert de base pour la fonction combat et historique (à venir)  
-                    eval(`parisJ${indexJoueur}`) = parseInt(parisCP.value)
-                    manche = {
-                        parisJ1,
-                        parisJ2,
-                        parisJ3,
-                        parisJ4,
-                    }
-                    
-                                           
+
+                                                           
             }else {alert("entrez un paris")}})
 
 
-                // Ajoute le code spécifique à exécuter au clic sur l'image du héros ici
+                
             });
         }
     }
