@@ -129,10 +129,11 @@ function CimetierePopUp() {
     // attribution d'un text au conteneur du titre
     titreCimetiere.textContent = "CIMETIERE"
 // récupération des heros selectionnées dans le jeux pour le voir dans le cimetiere / PAS FINI MAIS LA BASE EST Là
-    for (let i of cimetièreJ1) {
-        let CimDiv = creerUnElement(`${i}`, "CimDiv_Class", "div", ligne2);
-    }
+
 }
 
+function cimetierreJoueur (indexjoueur){
+    
+}
 
 export { Fcreerbibliotheque, boutonBibliotheque, CimetierePopUp }

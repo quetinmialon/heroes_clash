@@ -309,13 +309,13 @@ function choixDuHéroAjouer(indexJoueur) {
                             // ajout du héro choisi dans le cimetière du joueur en cours
                             eval(`cimetièreJ${indexJoueur}`).push(parseInt(heroId));
                     // assignation des différents info de la manche a l'objet manche qui sert de base pour la fonction combat et historique (à venir)  
-                    eval(`parisJ${indexJoueur}`) = parseInt(parisCP.value)
-                    manche = {
-                        parisJ1,
-                        parisJ2,
-                        parisJ3,
-                        parisJ4,
-                    }
+                    // eval(`parisJ${indexJoueur}`) = parseInt(parisCP.value)
+                    // manche = {
+                    //     parisJ1,
+                    //     parisJ2,
+                    //     parisJ3,
+                    //     parisJ4,
+                    // }
                     
                                            
             }else {alert("entrez un paris")}})
