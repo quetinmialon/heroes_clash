@@ -1,2 +1,2 @@
 # heroes_clash
-on va faire site qui claque ou les heros vont se mettrent des baffes
+on va faire site qui claque ou les heros vont se mettent des baffes
